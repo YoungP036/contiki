@@ -63,6 +63,30 @@ off(void)
   return 0;
 }
 /*---------------------------------------------------------------------------*/
+static int
+no_capabilities(void)
+{
+  return 0;   /* no element of the radio_capabilities_e enum is returned */
+}
+/*---------------------------------------------------------------------------*/
+static int
+dummy_get_config_const(radio_const_t cst_id)
+{
+  return RADIO_CONF_UNAVAILABLE_CONST;
+}
+/*---------------------------------------------------------------------------*/
+static int
+dummy_set_param(radio_param_t param_id, unsigned short value)
+{
+  return RADIO_CONF_UNAVAILABLE_PARAM;
+}
+/*---------------------------------------------------------------------------*/
+static int
+dummy_get_param(radio_param_t param_id)
+{
+  return RADIO_CONF_UNAVAILABLE_PARAM;
+}
+/*---------------------------------------------------------------------------*/
 const struct radio_driver nullradio_driver =
   {
     init,
@@ -75,5 +99,9 @@ const struct radio_driver nullradio_driver =
     pending_packet,
     on,
     off,
+    no_capabilities,
+    dummy_get_config_const,
+    dummy_set_param,
+    dummy_get_param,
   };
 /*---------------------------------------------------------------------------*/
